@@ -13,8 +13,10 @@ export class AuthModalComponent {
   }
 
   ngOnInit(): void{
-    this.modal.register('auth')
-    this.modal.register('test');
+    this.modal.register('auth');
   }
 
+  ngOnDestroy(): void{
+    this.modal.unregister('auth');
+  }
 }

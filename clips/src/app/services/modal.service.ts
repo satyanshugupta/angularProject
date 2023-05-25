@@ -6,31 +6,34 @@ interface Imodal {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ModalService {
   private modals: Imodal[] = [];
 
-  constructor() { }
+  constructor() {}
 
   register(id: string) {
     this.modals.push({
       id,
-      visible: false
-    })
+      visible: false,
+    });
+  }
+
+  unregister(id: string) {
+    this.modals = this.modals.filter((modal) => modal.id !== id);
   }
 
   isModalOpen(id: string): boolean {
     // Boolean(this.modals.find(element => element.id === id)?.visible)
-    return !!this.modals.find(element => element.id === id)?.visible
+    return !!this.modals.find((element) => element.id === id)?.visible;
   }
 
-
   toggleModal(id: string) {
-    const modal = this.modals.find(element => element.id === id)
+    const modal = this.modals.find((element) => element.id === id);
 
     if (modal) {
-      modal.visible = !modal.visible
+      modal.visible = !modal.visible;
     }
   }
 }
