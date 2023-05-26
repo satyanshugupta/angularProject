@@ -4,19 +4,16 @@ import { ModalService } from 'src/app/services/modal.service';
 @Component({
   selector: 'app-auth-modal',
   templateUrl: './auth-modal.component.html',
-  styleUrls: ['./auth-modal.component.css']
+  styleUrls: ['./auth-modal.component.css'],
 })
 export class AuthModalComponent {
+  constructor(public modal: ModalService) {}
 
-  constructor(public modal: ModalService){
-
-  }
-
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.modal.register('auth');
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     this.modal.unregister('auth');
   }
 }
