@@ -7,9 +7,8 @@ import { TabComponent } from '../tab/tab.component';
   styleUrls: ['./tabs-container.component.css'],
 })
 export class TabsContainerComponent {
-  @ContentChildren(TabComponent) tabs?: QueryList<TabComponent> =
-    new QueryList();
-  constructor() {}
+  @ContentChildren(TabComponent) tabs?: QueryList<TabComponent> = new QueryList();
+  constructor() { }
 
   ngAfterContentInit() {
     const activeTabs = this.tabs?.filter((tab) => tab.active);
@@ -24,6 +23,6 @@ export class TabsContainerComponent {
     });
 
     tab.active = true;
-    return false;
+    return false; // preventDefault alternative
   }
 }
