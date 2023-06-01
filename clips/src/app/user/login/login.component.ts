@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  credentials = {
+    email : '',
+    password : '',
+  }
+
+  login(){
+    console.log("User Logged in successfully",this.credentials)
+  }
 }
