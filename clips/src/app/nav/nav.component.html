@@ -12,17 +12,24 @@
       <!-- Primary Navigation -->
       <ul class="flex flex-row mt-1">
         <!-- Navigation Links -->
-        <li>
-          <a class="px-2" href="#" (click)="openModal($event)">Login / Register</a>
+        <li *ngIf="!(auth.isAuthenticated$ | async); else authLinks">
+          <a class="px-2" href="#" (click)="openModal($event)"
+            >Login / Register</a
+          >
         </li>
+        <ng-template #authLinks>
+          <li>
+            <a class="px-2" href="#">Manage</a>
+          </li>
+          <li>
+            <a class="px-2" href="#">Upload</a>
+          </li>
+        </ng-template>
         <li>
-          <a class="px-2" href="#">Manage</a>
+          <a class="px-2" href="about">About</a>
         </li>
-        <li>
-          <a class="px-2" href="#">Upload</a>
-        </li>
-        <li>
-          <a class="px-2" href="about.html">About</a>
+        <li *ngIf="(auth.isAuthenticated$ | async)">
+          <a class="px-2" href="#" (click)="logout($event)">logout</a>
         </li>
       </ul>
       <!-- Language Switcher -->
@@ -40,7 +47,7 @@
           </a>
         </li>
         <li style="display: none">
-          <a href="#">
+          <a href="#" >
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDBAMAAACYZb3pAAAAHlBMVEUpQqK2q8384OL3qa/tKTkAI5Wrt9z////5t7ztKTlzpJCAAAAABXRSTlP++vjs1BQWlgsAAAAxSURBVHgBYmRAA4yKaAJCAugqQgHtyzENAAAAAiD7pzaDr4MfRVEURVGU36IoipK5FLWNJ6UFusbWAAAAAElFTkSuQmCC"
               alt="fr"

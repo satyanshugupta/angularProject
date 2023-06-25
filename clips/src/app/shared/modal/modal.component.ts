@@ -1,4 +1,4 @@
-import { Component, Input,EffectRef, ElementRef } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -22,5 +22,9 @@ export class ModalComponent {
 
   ngOnInit(): void{
     document.body.appendChild(this.el.nativeElement)
+  }
+
+  ngOnDestroy(): void{
+    document.body.removeChild(this.el.nativeElement)
   }
 }
